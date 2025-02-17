@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\models\\history.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:models\\history.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|c:\\users\\marci\\onedrive\\escritorio\\microservicios\\profile\\profileservice\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{516AEA92-AB9D-4D0C-9CFA-6700DBBDB019}|ProfileService.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MongoDbService.cs",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Services\\MongoDbService.cs",
+              "RelativeDocumentMoniker": "Services\\MongoDbService.cs",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Services\\MongoDbService.cs",
+              "RelativeToolTip": "Services\\MongoDbService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T00:11:41.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-16T23:59:57.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T23:44:08.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T23:43:22.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "History.cs",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Models\\History.cs",
+              "RelativeDocumentMoniker": "Models\\History.cs",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Models\\History.cs",
+              "RelativeToolTip": "Models\\History.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T22:47:35.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Profile.cs",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Models\\Profile.cs",
+              "RelativeDocumentMoniker": "Models\\Profile.cs",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Models\\Profile.cs",
+              "RelativeToolTip": "Models\\Profile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T15:47:24.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T15:46:17.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\marci\\OneDrive\\Escritorio\\Microservicios\\profile\\ProfileService\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T15:45:56.671Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
