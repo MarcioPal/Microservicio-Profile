@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using ProfileService.Models;
+using System.Xml.Linq;
 
 public class MongoDbService
 {
@@ -13,11 +14,14 @@ public class MongoDbService
         _profilesCollection = database.GetCollection<Profile>("profiles");
     }
 
-    public async Task<List<Profile>> ObtenerUsuariosAsync() =>
+    public async Task<List<Profile>> getProfilesAsync() =>
         await _profilesCollection.Find(_ => true).ToListAsync();
 
-    public async Task InsertarUsuarioAsync(Profile usuario) =>
-        await _profilesCollection.InsertOneAsync(usuario);
+    public async Task<Profile> getProfileByUserId(string userId) =>
+        await _profilesCollection.Find(profile => profile.userId == userId).FirstOrDefaultAsync();
+
+    public async Task newProfileAsync(Profile profile) =>
+        await _profilesCollection.InsertOneAsync(profile);
 
     public class MongoDbSettings
     {
