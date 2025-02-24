@@ -11,7 +11,7 @@ namespace ProfileService.Models
         [BindNever]
         public string? id { get; set; }
         [BindNever]
-        public string userId { get; set; }
+        public string? userId { get; set; }
         public string name { get; set; }
         public string lastname { get; set; } 
         public string birthdate { get; set; }

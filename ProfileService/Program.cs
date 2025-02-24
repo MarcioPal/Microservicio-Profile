@@ -1,3 +1,4 @@
+using ProfileService.Services;
 using static MongoDbService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,11 +8,14 @@ builder.Services.AddControllersWithViews();
 
 // Cargar configuración desde appsettings.json
 builder.Services.Configure<MongoDbSettings>(
-    builder.Configuration.GetSection("MongoDB"));
+builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddMemoryCache();
 
 // Registrar el servicio de MongoDB
 builder.Services.AddSingleton<MongoDbService>();
-
+builder.Services.AddScoped<CacheService>();
+builder.Services.AddScoped<IndireccionAuthService>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 
@@ -29,6 +33,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",
