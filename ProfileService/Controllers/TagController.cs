@@ -123,7 +123,7 @@ namespace ProfileService.Controllers
         }
 
         [HttpPut("{id}/articles/remove")]
-        public async Task<IActionResult> Remove([FromHeader(Name = "Authorization")] string token, [FromBody] string article_id, [FromRoute] string id)
+        public async Task<IActionResult> Remove([FromHeader(Name = "Authorization")] string token, [FromBody] String article_id, [FromRoute] string id)
         {
             try
             {
