@@ -89,8 +89,9 @@ namespace ProfileService.Controllers
             }
         }
 
-        // PUT api/<HistoryController>/5
-        [HttpPut("{id}")]
+       
+            // PUT api/<HistoryController>/5
+            [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }

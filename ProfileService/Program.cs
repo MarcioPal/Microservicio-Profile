@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Hosting;
+using ProfileService.Controllers;
 using ProfileService.Services;
 using static MongoDbService;
 
@@ -13,9 +15,12 @@ builder.Services.AddMemoryCache();
 
 // Registrar el servicio de MongoDB
 builder.Services.AddSingleton<MongoDbService>();
-builder.Services.AddScoped<CacheService>();
-builder.Services.AddScoped<IndireccionAuthService>();
+builder.Services.AddSingleton<CacheService>();
+builder.Services.AddSingleton<HistoryService>();
+builder.Services.AddSingleton<IndireccionAuthService>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddScoped<HistoryController>();
+builder.Services.AddHostedService<RabbitMqListenerService>(); 
 
 var app = builder.Build();
 
