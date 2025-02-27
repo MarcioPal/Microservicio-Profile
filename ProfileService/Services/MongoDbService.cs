@@ -76,6 +76,13 @@ public class MongoDbService
         await _historyCollection.UpdateOneAsync(filter, update);
     }
 
+    public async Task deleteAllHistoryByUser(string user_id)
+    {
+        var filter = Builders<History>.Filter.Eq(h => h.id_user,user_id);
+
+        await _historyCollection.DeleteManyAsync(filter);
+    }
+
     //Tags
     public async Task<ProfileService.Models.Tag> getTagAsync(string id) =>
             await _tagsCollection.Find(tag => tag.id == id).FirstOrDefaultAsync();

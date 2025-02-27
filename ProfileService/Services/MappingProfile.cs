@@ -13,6 +13,7 @@ namespace ProfileService.Services
             CreateMap<Profile, DtoProfile>(); // Mapea Product a ProductDto
             CreateMap<DtoHistory, Models.History>();
             CreateMap<Models.History, DtoHistory>();
+            CreateMap<DtoUpdHistory, Models.History>();
         }
     }
 

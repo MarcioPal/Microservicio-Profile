@@ -31,6 +31,7 @@ namespace ProfileService.Services
             if (user is not null)
             {
                 History history = _mapper.Map<History>(dto);
+                history.id_user = user.id;
                 if (!await _mongoDbService.existsHistoryByUserIdAndArtId(user.id, dto.article_id))
                 {
 

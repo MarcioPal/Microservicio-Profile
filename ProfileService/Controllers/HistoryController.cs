@@ -89,17 +89,29 @@ namespace ProfileService.Controllers
             }
         }
 
-       
-            // PUT api/<HistoryController>/5
-            [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpDelete("{user_id}")]
+        public async Task<IActionResult> Delete([FromRoute] string user_id, [FromHeader(Name = "Authorization")] string token)
         {
-        }
+            try
+            {
+                if (token is null)
+                {
+                    return Unauthorized(new { Message = "Error: No se encuentra logueado" });
+                }
 
-        // DELETE api/<HistoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                User user = await _indireccionAuthService.getUser(token);
+                if (user is not null)
+                {
+                    await _mongoDbService.deleteAllHistoryByUser(user_id);
+                    return Ok(new { Message = "Se ha borrado el historial de articulos vistos correctamente"});
+                }
+                return BadRequest(new { Message = "Error: Token invalido" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            } 
         }
     }
 }
