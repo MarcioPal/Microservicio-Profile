@@ -56,7 +56,10 @@ namespace ProfileService.Services
                         {
                             case "profile_queue":
                                 DtoUpdHistory dtoHistory = JsonConvert.DeserializeObject<DtoUpdHistory>(message);
-                                bool bien = await _historyService.updateHistory(new DTO.DtoUpdHistory());
+                                Console.WriteLine($"Token: {dtoHistory.token}");
+                                Console.WriteLine($"Article: {dtoHistory.article_id}");
+                                Console.WriteLine($"Date: {dtoHistory.date}");
+                                bool bien = await _historyService.updateHistory(dtoHistory);
                                 if (bien)
                                 {
                                     await channel.BasicAckAsync(deliveryTag: ea.DeliveryTag, multiple: false);
