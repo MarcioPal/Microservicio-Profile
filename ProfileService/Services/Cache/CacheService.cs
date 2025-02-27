@@ -1,6 +1,7 @@
-﻿namespace ProfileService.Services;
+﻿namespace ProfileService.Services.Cache;
+
+using global::ProfileService.Models;
 using Microsoft.Extensions.Caching.Memory;
-using ProfileService.Models;
 
 public class CacheService
 {

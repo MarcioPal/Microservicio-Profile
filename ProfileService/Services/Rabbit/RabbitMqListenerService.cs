@@ -9,14 +9,14 @@ using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
-namespace ProfileService.Services
+namespace ProfileService.Services.Rabbit
 {
     public class RabbitMqListenerService : BackgroundService
     {
         private readonly HistoryService _historyService;
 
         public RabbitMqListenerService(HistoryService historyService) {
-            this._historyService = historyService;
+            _historyService = historyService;
         }    
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -59,7 +59,7 @@ namespace ProfileService.Services
                                 Console.WriteLine($"Token: {dtoHistory.token}");
                                 Console.WriteLine($"Article: {dtoHistory.article_id}");
                                 Console.WriteLine($"Date: {dtoHistory.date}");
-                                bool bien = await _historyService.updateHistory(dtoHistory);
+                                bool bien = await _historyService.Update(dtoHistory);
                                 if (bien)
                                 {
                                     await channel.BasicAckAsync(deliveryTag: ea.DeliveryTag, multiple: false);

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json.Linq;
 using ProfileService.DTO;
 using ProfileService.Models;
 
@@ -18,13 +19,75 @@ namespace ProfileService.Services
             this._mapper = mapper;
         }
 
+        public async Task<List<History>> Get(string token) {
 
-        public async Task<bool> updateHistory(DtoUpdHistory dto)
+            if (token is null)
+            {
+                throw new UnauthorizedAccessException("Error: No se encuentra logueado");
+            }
+
+            User user = await _indireccionAuthService.getUser(token);
+            if (user is not null)
+            {
+                List<History> lista = await _mongoDbService.getHistoryAsync(user.id);
+                return lista;
+            }
+            throw new UnauthorizedAccessException("Error: Token invalido");
+        }
+
+        public async Task<string> Save(string token, DtoHistory dtoHistory)
+        {
+
+            if (token is null)
+            {
+                throw new UnauthorizedAccessException("Error: No se encuentra logueado");
+            }
+
+            User user = await _indireccionAuthService.getUser(token);
+            if (user is not null)
+            {
+                History history = _mapper.Map<History>(dtoHistory);
+                if (!await _mongoDbService.existsHistoryByUserIdAndArtId(user.id, dtoHistory.article_id))
+                {
+
+                    history.id_user = user.id;
+
+                    await _mongoDbService.newHistoryAsync(history);
+
+                    return ("El articulo se ha añadido correctamente al historial de visualizaciones");
+                }
+                await _mongoDbService.updateHistoryDate(history);
+                return ("Se ha actualizado el historial de articulos vistos");
+            }
+            throw new UnauthorizedAccessException("Error: Token invalido");
+        }
+
+
+
+        public async void Delete(string token, string user_id) {
+
+            if (token is null)
+            {
+                throw new UnauthorizedAccessException("Error: No se encuentra logueado");
+            }
+
+            User user = await _indireccionAuthService.getUser(token);
+            if (user is not null)
+            {
+                await _mongoDbService.deleteAllHistoryByUser(user_id);
+                return;
+            }
+            throw new UnauthorizedAccessException("Error: Token invalido");
+
+        }
+
+
+        public async Task<bool> Update(DtoUpdHistory dto)
         {
 
             if (dto.token is null)
             {
-                throw new Exception("Error: No se encuentra logueado");
+                throw new UnauthorizedAccessException("Error: No se encuentra logueado");
             }
 
             User user = await _indireccionAuthService.getUser(dto.token);
@@ -44,7 +107,7 @@ namespace ProfileService.Services
                 await _mongoDbService.updateHistoryDate(history);
                 return true;
             }
-            throw new Exception("Error: Token invalido");
+            throw new UnauthorizedAccessException("Error: Token invalido");
 
 
         }
