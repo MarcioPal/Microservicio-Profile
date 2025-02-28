@@ -29,12 +29,12 @@ namespace ProfileService.Controllers
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -45,19 +45,19 @@ namespace ProfileService.Controllers
         {
             try
             {
-                _tagService.Save(token, tag);
+                await _tagService.Save(token, tag);
                 return Ok(new { Message = "El Tag se ha registrado correctamente" });
 
             }
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -67,17 +67,17 @@ namespace ProfileService.Controllers
         {
             try
             {
-                _tagService.add_article(token, id, article_id);
+                await _tagService.add_article(token, id, article_id);
                 return Ok(new { Message = "El articulo se ha añadido correctamente" });
             }
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -87,18 +87,18 @@ namespace ProfileService.Controllers
         {
             try
             {
-                _tagService.delete_article(token, id, article_id);
+                await _tagService.delete_article(token, id, article_id);
                 return Ok(new { Message = "El articulo ha sido removido correctamente" });
             }
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -108,19 +108,19 @@ namespace ProfileService.Controllers
         {
             try
             {
-                _tagService.Name(token, id, name);
+                await _tagService.Name(token, id, name);
                 return Ok("El nombre se ha actualizado correctamente");
 
             }
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }

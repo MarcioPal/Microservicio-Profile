@@ -9,11 +9,11 @@ namespace ProfileService.Services
     {
         public MappingProfile()
         {
-            CreateMap<DtoProfile, Profile>(); // Mapea ProductDto a Product
-            CreateMap<Profile, DtoProfile>(); // Mapea Product a ProductDto
-            CreateMap<DtoHistory, Models.History>();
-            CreateMap<Models.History, DtoHistory>();
-            CreateMap<DtoUpdHistory, Models.History>();
+            CreateMap<DTO.DtoProfile, Models.Profile>(); // Mapea ProductDto a Product
+            CreateMap<Models.Profile, DTO.DtoProfile>(); // Mapea Product a ProductDto
+            CreateMap<DTO.DtoHistory, Models.History>();
+            CreateMap<Models.History, DTO.DtoHistory>();
+            CreateMap<DTO.DtoUpdHistory, Models.History>();
         }
     }
 

@@ -5,7 +5,7 @@ namespace ProfileService.Models
     public class User
     {
         public bool enabled { set; get; }
-        public string? id { set; get; }
+        public string id { set; get; }
         public string login { set; get; }
         public string name { set; get; }
         public List<string> permissions { set; get; }

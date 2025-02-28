@@ -59,7 +59,10 @@ public class MongoDbService
     await _historyCollection.InsertOneAsync(history);
 
     public async Task<List<History>> getHistoryAsync(string userId) =>
-    await _historyCollection.Find(history => history.id_user == userId).ToListAsync();
+             await _historyCollection.Find(history => history.id_user == userId).ToListAsync();
+
+    public async Task<long> getQuantityHistoryByArticleId(string article_id) =>
+            await _historyCollection.CountDocumentsAsync(history => history.article_id == article_id);
 
     public async Task updateHistoryDate(History history)
     {
@@ -84,6 +87,9 @@ public class MongoDbService
     }
 
     //Tags
+
+    public async Task<List<ProfileService.Models.Tag>> getAllTags() =>
+            await _tagsCollection.Find(tag => true).ToListAsync();
     public async Task<ProfileService.Models.Tag> getTagAsync(string id) =>
             await _tagsCollection.Find(tag => tag.id == id).FirstOrDefaultAsync();
 
@@ -110,6 +116,11 @@ public class MongoDbService
         await _tagsCollection.UpdateOneAsync(filter, update);
     }
 
+    public async Task<bool> existTagById(string id)
+    {
+       return await _tagsCollection.Find(tag => tag.id == id).AnyAsync();
+
+    }
 
     public class MongoDbSettings
     {

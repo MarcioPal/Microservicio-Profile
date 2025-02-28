@@ -64,7 +64,7 @@ namespace ProfileService.Services
 
 
 
-        public async void Delete(string token, string user_id) {
+        public async Task Delete(string token) {
 
             if (token is null)
             {
@@ -74,7 +74,7 @@ namespace ProfileService.Services
             User user = await _indireccionAuthService.getUser(token);
             if (user is not null)
             {
-                await _mongoDbService.deleteAllHistoryByUser(user_id);
+                await _mongoDbService.deleteAllHistoryByUser(user.id);
                 return;
             }
             throw new UnauthorizedAccessException("Error: Token invalido");

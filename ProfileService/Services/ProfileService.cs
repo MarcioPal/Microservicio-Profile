@@ -57,14 +57,17 @@ namespace ProfileService.Services
 
                         return await _mongoDbService.getProfileByUserId(user.id);
                     }
-                    throw new Exception("Error: No se encuentra el perfil requerido");
+                    else
+                    {
+                        throw new Exception("Error: No se encuentra el perfil requerido");
+                    }
                 }
                 throw new UnauthorizedAccessException("Error: No tiene permiso de admin");
             }
             throw new UnauthorizedAccessException("Error: Token invalido");
         }
 
-        public async void Save(string token, DtoProfile dtoProfile) {
+        public async Task Save(string token, DtoProfile dtoProfile) {
 
             if (token is null)
             {
@@ -87,7 +90,7 @@ namespace ProfileService.Services
 
         }
 
-        public async void Update(string token, Models.Profile profilePut) {
+        public async Task Update(string token, Models.Profile profilePut) {
 
             if (token is null)
             {
@@ -107,6 +110,7 @@ namespace ProfileService.Services
                     profile.lastname = profilePut.lastname;
                     profile.imageId = profilePut.imageId;
                     await _mongoDbService.updateProfile(profile);
+                    return;
                 }
             }
             throw new Exception("Error: Token invalido");
@@ -118,32 +122,70 @@ namespace ProfileService.Services
             {
                 throw new UnauthorizedAccessException("Error: No se encuentra logueado");
             }
+
+            List<string> sugerencias = new List<string>();
+
             User user = await _indireccionAuthService.getUser(token);
 
             if (user is not null)
             {
-                Models.Profile profile = await _mongoDbService.getProfileByUserId(user.id);
-                Models.Tag tag = await _mongoDbService.getTagAsync(profile.tag_id);
-                List<History> vistos = await _mongoDbService.getHistoryAsync(user.id);
-                List<string> sugerencias = new List<string>();
-
-                foreach (string article in tag.articles)
+                if (await _mongoDbService.existsProfileByUserId(user.id))
                 {
-                    bool visto = false;
-                    foreach (History art in vistos)
+                    Models.Profile profile = await _mongoDbService.getProfileByUserId(user.id);
+
+                    if (profile.tag_id is null)
                     {
-                        if (article == art.article_id)
+                        List<Tag> tags = await _mongoDbService.getAllTags();
+
+                        Dictionary<string, long> article_cantidad = new Dictionary<string, long>();
+
+                        foreach (Models.Tag t in tags)
                         {
-                            visto = true;
+                            foreach (string article in t.articles)
+                            {
+
+                                if (!article_cantidad.ContainsKey(article))
+                                {
+
+                                    article_cantidad.Add(article, await _mongoDbService.getQuantityHistoryByArticleId(article));
+                                }
+
+                            }
+
                         }
-                    }
-                    if (!visto)
-                    {
-                        sugerencias.Add(article);
+                        var sortedList = article_cantidad.OrderByDescending(kvp => kvp.Value)
+                                                        .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+                        foreach (KeyValuePair<string, long> kvp in sortedList)
+                        {
+                            sugerencias.Add(kvp.Key);
+                        }
+
+                        return sugerencias;
                     }
 
+                    Models.Tag tag = await _mongoDbService.getTagAsync(profile.tag_id);
+                    List<History> vistos = await _mongoDbService.getHistoryAsync(user.id);
+
+                    foreach (string article in tag.articles)
+                    {
+                        bool visto = false;
+                        foreach (History art in vistos)
+                        {
+                            if (article == art.article_id)
+                            {
+                                visto = true;
+                            }
+                        }
+                        if (!visto)
+                        {
+                            sugerencias.Add(article);
+                        }
+
+                    }
+                    return sugerencias;
                 }
-                return sugerencias;
+                throw new Exception("No existe perfil creado para el usuario logueado");
             }
             throw new UnauthorizedAccessException("Token invalido");
         }

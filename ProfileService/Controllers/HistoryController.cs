@@ -28,17 +28,17 @@ namespace ProfileService.Controllers
         {
             try
             {
-                return Ok(_historyService.Get(token));
+                return Ok(await _historyService.Get(token));
 
             }
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -49,37 +49,37 @@ namespace ProfileService.Controllers
         {
             try
             {
-                return Ok(_historyService.Save(token, dtoHistory));
+                return Ok(await _historyService.Save(token, dtoHistory));
 
             }
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
 
-        [HttpDelete("{user_id}")]
-        public async Task<IActionResult> Delete([FromRoute] string user_id, [FromHeader(Name = "Authorization")] string token)
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromHeader(Name = "Authorization")] string token)
         {
             try
             {
-                _historyService.Delete(token, user_id);
+                await _historyService.Delete(token);
                 return Ok(new { Message = "Se ha borrado el historial de articulos vistos correctamente"});
                 
             }
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }

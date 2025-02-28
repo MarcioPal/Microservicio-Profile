@@ -13,7 +13,7 @@ using AutoMapper;
 
 namespace ProfileService.Controllers
 {
-    [Route("v1/[controller]")]
+    [Route("v1/profile")]
     [ApiController]
     public class ProfileController : ControllerBase
     {
@@ -34,12 +34,12 @@ namespace ProfileService.Controllers
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -55,12 +55,12 @@ namespace ProfileService.Controllers
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -71,19 +71,19 @@ namespace ProfileService.Controllers
         {
             try
             {
-                 _profileService.Save(token, dtoProfile);
+                await _profileService.Save(token, dtoProfile);
                 return Ok("El perfil fue registrado correctamente");
 
             }
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -94,18 +94,18 @@ namespace ProfileService.Controllers
         {
             try
             {
-                _profileService.Update(token, profilePut);
+                await _profileService.Update(token, profilePut);
                 return Ok("El perfil fue actualizado correctamente");
             }
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
         }
@@ -116,16 +116,16 @@ namespace ProfileService.Controllers
         {
             try
             {
-                return Ok(_profileService.getSugerencias(token));
+                return Ok(await _profileService.getSugerencias(token));
             }
 
             catch (UnauthorizedAccessException ex)
             {
-                return Unauthorized(ex.Message);
+                return Unauthorized(new { Message = ex.Message });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
 
             }
             

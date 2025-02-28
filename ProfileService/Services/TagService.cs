@@ -33,15 +33,19 @@ namespace ProfileService.Services
             {
                 if (user.permissions.Contains("admin"))
                 {
-                    Models.Tag tag = await _mongoDbService.getTagAsync(id);
-                    return tag;
+                    if (await _mongoDbService.existTagById(id))
+                    {
+                        Models.Tag tag = await _mongoDbService.getTagAsync(id);
+                        return tag;
+                    }
+                    throw new Exception("No existe Tag con el id especificado");
                 }
                 throw new UnauthorizedAccessException("Error: No tiene permiso de admin");
             }
             throw new Exception("Error: Token invalido");
         }
 
-        public async void Save(string token, Tag tag)
+        public async Task Save(string token, Tag tag)
         {
 
             if (token is null)
@@ -62,7 +66,7 @@ namespace ProfileService.Services
             throw new UnauthorizedAccessException("Error: Token invalido");
         }
 
-        public async void Name(string token, string id, string name)
+        public async Task Name(string token, string id, string name)
         {
 
             if (token is null)
@@ -75,10 +79,14 @@ namespace ProfileService.Services
             {
                 if (user.permissions.Contains("admin"))
                 {
-                    Models.Tag tag = await _mongoDbService.getTagAsync(id);
-                    tag.name = name;
-                    await _mongoDbService.updateTagName(tag);
-                    return;
+                    if (await _mongoDbService.existTagById(id))
+                    {
+                        Models.Tag tag = await _mongoDbService.getTagAsync(id);
+                        tag.name = name;
+                        await _mongoDbService.updateTagName(tag);
+                        return;
+                    }
+                    throw new Exception("No existe Tag con el id especificado");
                 }
                 throw new UnauthorizedAccessException("No tiene permisos de admin");
             }
@@ -87,7 +95,7 @@ namespace ProfileService.Services
 
 
 
-        public async void add_article(string token, string id,string article_id) {
+        public async Task add_article(string token, string id,string article_id) {
 
             if (token is null)
             {
@@ -100,21 +108,25 @@ namespace ProfileService.Services
             {
                 if (user.permissions.Contains("admin"))
                 {
-                    Models.Tag tag = await _mongoDbService.getTagAsync(id);
-                    if (!tag.articles.Contains(article_id))
+                    if (await _mongoDbService.existTagById(id))
                     {
-                        tag.articles.Add(article_id);
+                        Models.Tag tag = await _mongoDbService.getTagAsync(id);
+                        if (!tag.articles.Contains(article_id))
+                        {
+                            tag.articles.Add(article_id);
 
-                        await _mongoDbService.updateArticlesTag(tag);
-                        return;
+                            await _mongoDbService.updateArticlesTag(tag);
+                            return;
+                        }
                     }
+                    throw new Exception("No existe Tag con el id especificado");
                 }
                 throw new UnauthorizedAccessException("Error: No tiene permisos de admin");
             }
             throw new UnauthorizedAccessException("Token invalido");
         }
 
-        public async void delete_article(string token, string id, string article_id) {
+        public async Task delete_article(string token, string id, string article_id) {
 
             if (token is null)
             {
@@ -126,13 +138,19 @@ namespace ProfileService.Services
             {
                 if (user.permissions.Contains("admin"))
                 {
-                    Models.Tag tag = await _mongoDbService.getTagAsync(id);
-                    if (tag.articles.Contains(article_id))
+                    if (await _mongoDbService.existTagById(id))
                     {
-                        tag.articles.Remove(article_id);
-                        return;
+                        Models.Tag tag = await _mongoDbService.getTagAsync(id);
+                        if (tag.articles.Contains(article_id))
+                        {
+                            tag.articles.Remove(article_id);
+                            await _mongoDbService.updateArticlesTag(tag);
+                            return;
+                        }
+                        throw new Exception("El articulo especificado no existe en la lista");
                     }
-                    throw new Exception("El articulo especificado no existe en la lista");
+                    throw new Exception("No existe Tag con el id especificado");
+
                 }
                 throw new UnauthorizedAccessException("No tiene permisos de admin");
             }
